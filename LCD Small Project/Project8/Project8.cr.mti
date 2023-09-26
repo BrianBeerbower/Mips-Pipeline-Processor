@@ -1,0 +1,77 @@
+C:/Users/Bigbm/Desktop/Project8/Project5.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project5.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project5
+-- Compiling module ff32
+-- Compiling module ff5
+-- Compiling module decoder5to32
+-- Compiling module op
+-- Compiling module mux2to1x32
+
+Top level modules:
+	Project5
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/Project8_CPU_testbench2020.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project8_CPU_testbench2020.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project8_testbench
+
+Top level modules:
+	Project8_testbench
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/Project6.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project6.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project6
+-- Compiling module signExt
+-- Compiling module mux2to1x32
+-- Compiling module fflw
+-- Compiling module ff1bit
+-- Compiling module pcff
+
+Top level modules:
+	Project6
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/Project7.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project7.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project7
+
+Top level modules:
+	Project7
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/project2a.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/project2a.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module project2a
+-- Compiling module alu2a
+
+Top level modules:
+	project2a
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/project2b.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/project2b.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module project2b
+-- Compiling module lac2
+-- Compiling module lac4
+-- Compiling module lac8
+-- Compiling module lac16
+-- Compiling module lac32
+
+Top level modules:
+	project2b
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/Project4.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project4.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project4
+-- Compiling module ff
+-- Compiling module tristate
+-- Compiling module mem0
+-- Compiling module mem32
+
+Top level modules:
+	Project4
+
+} {} {}} C:/Users/Bigbm/Desktop/Project8/Project8.v {1 {vlog -work work -stats=none C:/Users/Bigbm/Desktop/Project8/Project8.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Project8
+
+Top level modules:
+	Project8
+
+} {} {}}

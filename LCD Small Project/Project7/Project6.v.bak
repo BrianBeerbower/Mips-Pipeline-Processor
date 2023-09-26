@@ -1,0 +1,121 @@
+module Project6(ibus,clk,abus,bbus,dbus,Databus);
+input [31:0]ibus;
+input clk;
+output [31:0] abus,bbus,dbus;
+inout [31:0] Databus;
+
+wire [31:0] Aselect,Bselect,Dselect,Immbus,Immbus1,abus0,bbus0,bbus1,bbus2,Dselect0,Dselect1,Dselect3,Dselect4,ibus0,dbus0,dbus1,dbus2,dbus3,LWbus,SWbus,Dselect2,LWbus1;
+wire [2:0] S,S0;
+wire Imm,Cin,V,Cout,Imm0,Cin0,LW0,SW0,LW,SW,LW1,SW1,LW2;
+//module ff32(clk,in,out);
+ff32 ifid1(clk,ibus,ibus0);
+//module op(ibus,Imm,Cin,S,LW,SW);
+op d1(ibus0,Imm0,Cin0,S0,LW0,SW0);
+
+//decoder5to32(in,out); 
+decoder5to32 b1(ibus0[25:21],Aselect);
+decoder5to32 b2(ibus0[20:16],Bselect);
+decoder5to32 b3(ibus0[15:11],Dselect0);
+
+//module signExt(in,out);0
+signExt se1(ibus0[15:0],Immbus);
+
+//module mux2to1x32(bbus0,Immbus,Imm,bbus);
+mux2to1x32 mux2(Dselect0,Bselect,Imm0,Dselect1);
+
+//module Project4(Aselect,Bselect,Dselect,clk,abus,bbus,dbus);
+Project4 RegFile1(Aselect,Bselect,Dselect4,clk,abus0,bbus0,dbus3);
+
+//module ff5(clk,Iin,Sin,Cin,LWin,SWin,Iout,Sout,Cout,LWout,SWout);
+ff5 walls(clk,Imm0,S0,Cin0,LW0,SW0,Imm,S,Cin,LW,SW);
+//module ff32(clk,in,out);
+ff32 walld(clk,Dselect1,Dselect2);
+//module ff32(clk,in,out);
+ff32 walla(clk,abus0,abus);
+//module ff32(clk,in,out);
+ff32 wallb(clk,bbus0,bbus1);
+//module ff32(clk,in,out);
+ff32 wallimm(clk,Immbus,Immbus1);
+
+//module mux2to1x32(bbus0,Immbus,Imm,bbus);
+mux2to1x32 mux1(bbus1,Immbus1,Imm,bbus);
+
+//module project2b(a,b,d,S,V,Cin,Cout);
+project2b alu1(abus,bbus,dbus0,S,V,Cin,Cout);
+
+//module ff32(clk,in,out);
+ff32 ff2(clk,dbus0,dbus);
+
+//module ff32(clk,in,out);
+ff32 ff5(clk,bbus1,SWbus);
+
+//module fflw(clk,LWin,LWout);
+fflw exmem2(clk,SW,SW1);
+fflw exmem3(clk,LW,LW1);
+//tristate(enable,inbus,outbus)
+tristate ts1(SW,SWbus,Databus);
+tristate tl1(LW,Databus,LWbus);
+
+//module ff32(clk,in,out);
+ff32 exmem1(clk,Dselect2,Dselect3);
+
+mux2to1x32 mux3(Dselect3,32'b0,SW1,Dselect4);
+
+ff32 ff3(clk,dbus,dbus1);
+ff32 ff4(clk,LWbus,LWbus1);
+//module fflw(clk,LWin,LWout);
+fflw memwb1(clk,LW1,LW2);
+mux2to1x32 mux4(dbus1,LWbus1,LW2,dbus3);
+
+endmodule
+
+
+
+module signExt(in,out);
+input [15:0]in;
+output reg [31:0]out;
+
+always @(*)
+begin 
+if (in[15]==1'b1)
+begin
+out[31:16] = 16'hffff;
+out[15:0] = in;
+end
+else if (in[15]==1'b0)
+begin
+out[31:16] = 16'h0000;
+out[15:0] = in;
+end
+else
+begin
+out[31:16] = 16'h0000;
+out[15:0] = in;
+end
+end
+endmodule 
+
+
+module mux2to1x32(bbus0,Immbus,Imm,bbus);
+input Imm;
+input [31:0]Immbus,bbus0;
+output reg [31:0]bbus;
+
+always@(*)
+begin
+case(Imm)
+1'b0:bbus=bbus0;
+1'b1:bbus=Immbus;
+endcase
+end
+endmodule 
+
+module fflw(clk,LWin,LWout);
+input clk,LWin;
+output reg LWout;
+
+always @ (posedge clk)
+begin
+LWout = LWin;
+end
+endmodule

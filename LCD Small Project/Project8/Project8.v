@@ -1,0 +1,9 @@
+module Project8(clk,reset,iaddrbus,ibus,daddrbus,databus);
+input clk,reset;
+input [31:0] ibus;
+inout [31:0] databus;
+output [31:0] iaddrbus,daddrbus;
+wire [31:0] abus,bbus;
+//module Project6(ibus,clk,abus,bbus,dbus,Databus,reset,iaddrbus);
+Project6 p6(ibus,clk,abus,bbus,daddrbus,databus,reset,iaddrbus);
+endmodule
